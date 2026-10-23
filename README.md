@@ -42,6 +42,9 @@ scripts/          Statistical analyses (Kendall tau, Nemenyi, negative controls)
 configs/          Training / preprocessing YAML configurations.
 run_*.py          Top-level driver scripts (training, evaluation, RRF validation,
                   ablations).
+src/              Legacy v1 prototype (self-contained HGT + FGW). Superseded by
+                  v2_redesign/; retained for reference and covered by tests/.
+tests/            Unit tests for the v1 prototype.
 ```
 
 ## Model variants
@@ -104,6 +107,9 @@ python run_validation_final_rrf.py
 
 # Benchmarks (variant x benchmark matrix; --skip-ppi avoids the 650 MB STRING load)
 python benchmarks/run_benchmarks.py --variant all --benchmark all
+
+# Unit tests (cover the legacy v1 prototype in src/)
+python -m pytest tests -q
 ```
 
 ## License

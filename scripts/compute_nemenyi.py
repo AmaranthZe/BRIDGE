@@ -7,7 +7,7 @@ import numpy as np
 from pathlib import Path
 from scipy.stats import friedmanchisquare, rankdata
 
-ROOT = Path(r"C:/Users/Username/Desktop/Project1_DiseaseGo2Gene/Project1_DiseaseGo2Gene")
+ROOT = Path(__file__).resolve().parent.parent
 
 with open(ROOT / "benchmarks/results/paper_comprehensive_results.json") as f:
     data = json.load(f)

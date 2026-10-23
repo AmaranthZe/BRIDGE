@@ -60,7 +60,7 @@ bridge = "v2_redesign.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["v2_redesign*", "v3_crosshop*", "benchmarks*"]
+include = ["v2_redesign*", "v3_crosshop*", "benchmarks*", "src*"]
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml", "*.yml"]
@@ -73,3 +73,8 @@ include = '\.pyi?$'
 [tool.isort]
 profile = "black"
 line_length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+addopts = "-v"

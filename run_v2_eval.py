@@ -555,7 +555,7 @@ def main():
     logger.info("\n" + "=" * 60)
     logger.info("Part 5: FGW-based ortholog recovery (Ensembl Compara)")
 
-    ortho_path = Path("/Genomics/chanlab/Ze/MGPmodel/Porject2_Gene2Gene/data_cache/human_mouse_orthologs.tsv")
+    ortho_path = Path("data/external/human_mouse_orthologs.tsv")
     if ortho_path.exists():
         import csv
         # Load 1:1 orthologs that exist in our gene sets

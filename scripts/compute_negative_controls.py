@@ -18,7 +18,7 @@ import scipy.sparse as sp
 from pathlib import Path
 from scipy.stats import mannwhitneyu, ttest_1samp
 
-ROOT = Path(r"C:/Users/Username/Desktop/Project1_DiseaseGo2Gene/Project1_DiseaseGo2Gene")
+ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "manuscript/figures_precompute/out/08c_negative_controls.csv"
 OUT_META = ROOT / "manuscript/figures_precompute/out/08c_negative_controls_meta.json"
 
