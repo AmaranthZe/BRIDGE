@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bridge"
+version = "1.0.0"
+description = "BRIDGE: disease-informed functional alignment of human and mouse genes via a unified heterogeneous GNN and Fused Gromov-Wasserstein optimal transport"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Jinyun Yan"},
+    {name = "Ze Cao"},
+]
+keywords = [
+    "bioinformatics",
+    "cross-species",
+    "gene-mapping",
+    "graph-neural-network",
+    "optimal-transport",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+dependencies = [
+    "numpy>=1.26.0",
+    "scipy>=1.13.0",
+    "pandas>=2.2.0",
+    "scikit-learn>=1.5.0",
+    "torch>=2.3.0",
+    "torch-geometric>=2.5.0",
+    "networkx>=3.2.0",
+    "pot>=0.9.0",
+    "pyyaml>=6.0.0",
+    "tqdm>=4.66.0",
+    "rich>=13.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+]
+gpu = [
+    "faiss-gpu>=1.7.0",
+]
+
+[project.scripts]
+bridge = "v2_redesign.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["v2_redesign*", "v3_crosshop*", "benchmarks*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.yml"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 100

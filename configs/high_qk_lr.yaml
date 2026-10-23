@@ -1,0 +1,78 @@
+python: "3.10"
+
+paths:
+  raw_dir: "dataset"
+  proc_dir: "data/processed"
+  artifacts_dir: "data/processed/artifacts"
+
+io:
+  human_gobp: "human_GOBP_ensembl.csv"
+  human_gomf: "human_GOMF_ensembl.csv"
+  mouse_gobp: "mouse_GOBP_ensembl.csv"
+  mouse_gomf: "mouse_GOMF_ensembl.csv"
+  human_dis: "HumanDiseaseGene.csv"
+  mouse_dis: "MouseDiseaseGene.csv"
+
+preproc:
+  weighting: "tfidf"
+  drop_go_roots: true
+  go_roots: ["GO:0008150", "GO:0003674", "GO:0005575"]
+  disease_winsor_q: 0.995
+  row_l2: true
+
+model:
+  d: 128
+  layers: 2
+  heads: 4
+  dropout: 0.3
+  edge_bias_kappa: 1.0
+  fusion_entropy_reg: 0.001
+  share_go_weights: true
+  share_gene_weights: false
+
+fgw:
+  alpha: 0.5
+  lambda_label: 0.0
+  epsilon: 0.05
+  lambda_prior: 0.5
+  lambda_memory: 0.3
+  use_unbalanced: true
+  tau_row: 0.05
+  tau_col: 0.05
+  feature_weights:
+    bp: 0.25
+    mf: 0.15
+    disease: 0.60
+
+candidates:
+  topc: 128
+  soft_temperature: 0.1
+  explore_ratio: 0.05
+  memory_momentum: 0.9
+  global_refresh_every: 5
+  T_init: 0.07
+  max_candidates: 1024
+  qk_lr_multiplier: 10.0  # 10x higher learning rate for Q-K projections
+
+train:
+  epochs: 15
+  batch_size: 256
+  k_hops: 1
+  lr: 0.0003
+  weight_decay: 0.0001
+  amp: false
+  clip_grad: 2.0
+  seed: 3407
+  val_every: 1
+  save_every: 5
+
+infer:
+  local_refine_iters: 20
+  topk_genes: 20
+  topk_bp: 20
+  topk_mf: 10
+  topk_disease: 20
+
+logging:
+  backend: tensorboard
+  log_dir: runs/high_qk_lr

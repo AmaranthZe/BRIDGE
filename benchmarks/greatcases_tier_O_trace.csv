@@ -1,0 +1,11 @@
+id,collapsed_into_id,overlap_note,literature_pmids
+16,13,Context-specific AD/synaptic-plasticity reiteration of ID 13 (LILRB2->PirB),24052308
+20,11,Family-level restatement of ID 11 (human KIR -> Ly49 family),11513141
+21,12,Reiteration of ID 12 (SIGLEC8 -> Siglec-F) from additional disease contexts,19178537
+25,17,Reiteration of ID 17 (SIGLEC9 -> Siglec-E) with additional disease contexts (lung/microglia/osteoclast),
+32,13,Family-level reiteration of IDs 13/16 broadening LILRB2 to LILRB2/LILRB3 -> PirB,
+41,19,Reiteration of ID 19 (FCGR3A -> Fcgr4/FcgammaRIV) from later direct-counterpart framing,
+43,27,Disease-specific refinement of ID 27 naming Cd209a as a DC-SIGN disease-context node within the Cd209 module,
+53,44,Reiteration of ID 44 (APOBEC3 cluster -> Apobec3) as prototypical many-to-one compression,
+61,17,Family-level many-to-one reiteration of IDs 17/25 broadening to human SIGLEC7/SIGLEC9 -> Siglec-E,34155121
+67,63,Reiteration of ID 63 (IgG4 -> mouse IgG1) from later IgG4-RD search round,35133976

@@ -1,0 +1,76 @@
+paths:
+  raw_dir: "dataset"
+  proc_dir: "data/processed"
+
+io:
+  human_gobp: "human_GOBP_ensembl.csv"
+  human_gomf: "human_GOMF_ensembl.csv"
+  mouse_gobp: "mouse_GOBP_ensembl.csv"
+  mouse_gomf: "mouse_GOMF_ensembl.csv"
+  human_dis: "HumanDiseaseGene.csv"
+  mouse_dis: "MouseDiseaseGene.csv"
+
+preproc:
+  go_roots:
+    - "GO:0008150"
+    - "GO:0003674"
+    - "GO:0005575"
+  disease_winsor_q: 0.995
+  row_l2: true
+  svd_dim: 128
+  heldout_ratio: 0.1
+
+model:
+  hidden_dim: 128
+  num_layers: 2
+  heads: 4
+  dropout: 0.3
+  edge_weight_blend: 0.1
+  fusion_entropy_reg: 0.001
+
+fgw:
+  alpha: 0.5
+  epsilon: 0.05
+  max_iter: 50
+  tau_row: 0.05
+  tau_col: 0.15
+  use_unbalanced: true
+  lambda_prior: 0.5
+  lambda_memory: 0.3
+  feature_weights:
+    bp: 0.25
+    mf: 0.15
+    disease: 0.60
+
+candidates:
+  topc: 256
+  max_candidates: 2048
+  soft_temperature: 0.1
+  explore_ratio: 0.05
+  T_init: 0.07
+  mmr_lambda: 0.25
+  svd_score_weight: 0.7
+
+train:
+  epochs: 80
+  batch_size: 192
+  lr: 0.0003
+  weight_decay: 0.0001
+  clip_grad: 2.0
+  seed: 3407
+  amp: false
+  val_every: 1
+  save_every: 5
+  memory_momentum: 0.9
+  global_refresh_every: 5
+  qk_lr_multiplier: 1.0
+  hgt_emb_lr_multiplier: 0.1
+  train_tau_col: 0.3
+  residual_scale_init: -2.2
+
+infer:
+  topk_genes: 20
+  topk_bp: 20
+  topk_mf: 10
+  topk_disease: 20
+  fgw_refine_iters: 20

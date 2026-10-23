@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Data and derived artifacts (not version-controlled)
+# NOTE: leading slash anchors these to the repo root so the source-code
+# packages v2_redesign/data/ and v3_crosshop/data/ are NOT ignored.
+/dataset/
+/data/
+/runs/
+*.pt
+*.pth
+*.npz
+*.npy
+*.pkl
+
+# Run outputs
+*.log
+/logs/
+benchmarks/results/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
